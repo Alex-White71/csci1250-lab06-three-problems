@@ -8,6 +8,10 @@
 * practices decisions and one of the four loops.
 */
 
+// Makes a new Random object needed for the Dice Table
+
+Random rng = new Random(4000);
+
 //Displays menu options 
 Console.WriteLine("=== CSCI 1250 Lab06 ===");
 Console.WriteLine("1. The Grade Checker");
@@ -64,7 +68,46 @@ if (choice == 1 || choice == 4)
 
 if (choice == 2 || choice == 4)
 {
+    //Intro text before setting variables to empty or 0 before use in the dice table game
+
+    Console.WriteLine();
+    Console.WriteLine("=== Exercise 2: The Dice Table ===");
+    int rolls = 0;
+    int win = 0;
+    char rollAgain;
+
+    // This loop run untill the user press n at the end of the first roll to end it untill then it will go thoght the game of dice table The code will also play at least one round when started
+   
+    do
+    {
+        rolls++;
+        int roll1 = rng.Next(1,7);
+        int roll2 = rng.Next(1,7);
+        int total = roll1+roll2;
+        if (roll1 == 1 && roll2 == 1)
+        {
+            Console.WriteLine($"Roll {rolls}: {roll1} and {roll2}, total {total}. Snake eyes.");
+        }
+        else if (roll1 == roll2)
+        {
+            Console.WriteLine($"Roll {rolls}: {roll1} and {roll2}, total {total}. Doubles!");
+        }
+        else if (total == 7 || total == 11)
+        {
+            Console.WriteLine($"Roll {rolls}: {roll1} and {roll2}, total {total}. A winner.");
+            win ++;
+        }
+        else
+        {
+            Console.WriteLine($"Roll {rolls}: {roll1} and {roll2}, total {total}.");
+        }
+        Console.Write("Roll again? (y/n): ");
+        rollAgain = char.ToUpper(Convert.ToChar(Console.ReadLine()));
+    }while(rollAgain == 'Y');
+
+    // exit massage for the game set outside the loop so that is only shows once when leveling the game
     
+    Console.WriteLine($"You rolled {rolls} times and won {win}.");
 }
 
 if (choice == 3 || choice == 4)
