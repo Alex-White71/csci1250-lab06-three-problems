@@ -71,8 +71,3 @@ if (choice == 3 || choice == 4)
 {
     
 }
-
-else
-{
-    Console.WriteLine("Choose a number from 1 to 5.");
-}
