@@ -112,7 +112,54 @@ if (choice == 2 || choice == 4)
 
 if (choice == 3 || choice == 4)
 {
-    
+
+    // Set up header and variables needed for the loops
+
+    Console.WriteLine();
+    Console.WriteLine("=== Exercise 3: The Score Report ===");
+    int[] scoreReport = new int[5];
+    int scoreCount = 0;
+
+    //This loop uses the scoreCount to keep track of the score number and print it the loop adds one ever time the loop runs after the the user is ask for the score and the score number is added to the array scoreReport
+    //The loop end after 5 score report are enterd based on the i variable 
+
+    for (int i=0; i<=4; i++)
+    {
+        scoreCount++;
+        Console.Write($"What is Score {scoreCount}: ");
+        scoreReport[i] = Convert.ToInt32(Console.ReadLine());
+    }
+
+    //Values needed for counting as the foreach loop loops
+    int totalSum = 0;
+    int passCount = 0;
+    int indexCount = 0;
+
+    // This loop goes thogh each value in the array ans output sats in the final loop 
+
+    foreach(int n in scoreReport)
+    {
+        indexCount ++;
+        double lengthScore = scoreReport.Length;
+        totalSum += n;
+        int highestScore = Math.Max(scoreReport[0], scoreReport[4]);
+
+        if( n >= 70 )
+        {
+            passCount++; 
+        }
+
+        if(indexCount == 5)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"Scores entered: {lengthScore}");
+            Console.WriteLine($"Total: {totalSum}");
+            double scoreAvg = totalSum/lengthScore;
+            Console.WriteLine($"Average: {scoreAvg}");
+            Console.WriteLine($"Highest: {highestScore}");
+            Console.WriteLine($"Passing: {passCount} of {lengthScore}");
+        }
+    }
 }
 
 if (choice > 1 || choice < 5)
