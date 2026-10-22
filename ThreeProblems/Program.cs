@@ -147,6 +147,7 @@ do
         int totalSum = 0;
         int passCount = 0;
         int indexCount = 0;
+        Array.Sort(scoreReport);
 
         // This loop goes thogh each value in the array ans output sats in the final loop 
 
@@ -155,7 +156,7 @@ do
             indexCount ++;
             double lengthScore = scoreReport.Length;
             totalSum += n;
-            int highestScore = Math.Max(scoreReport[0], scoreReport[4]);
+            int highestScore = scoreReport[4];
 
             if( n >= 70 )
             {
